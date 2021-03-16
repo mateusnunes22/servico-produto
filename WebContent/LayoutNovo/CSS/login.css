@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+* {
+	box-sizing: border-box;
+}
+*:focus {
+	outline: none;
+}
+body {
+	font-family: Arial;
+	background: #eaeaea;
+	color: #999;
+	font: 100%/1.5em sans-serif;
+	margin: 0;
+}
+.login {
+	margin: 80px auto;
+	width: 316px;
+}
+.login-screen {
+	background-color: #FFF;
+	padding: 20px;
+	border-radius: 5px;
+	height: 360px;
+}
+.app-title {
+	text-align: center;
+	color: #FF3030;
+	font-size: 28px;
+}
+.login-form {
+	text-align: center;
+}
+.control-group {
+	margin-bottom: 0px;
+	text-align: center;
+}
+input {
+	text-align: center;
+	background-color: #ECF0F1;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 200;
+	padding: 10px 0;
+	width: 250px;
+	transition: border .5s;
+}
+input:focus {
+	border: 2px solid #FF3030;
+	padding: 6px 0;
+	box-shadow: none;
+	font-size: 16px;
+}
+
+.btn {
+	border: 2px solid transparent;
+	background: #FF3030;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 0;
+	text-decoration: none;
+	text-shadow: none;
+	border-radius: 3px;
+	box-shadow: none;
+	transition: 0.25s;
+	display: block;
+	width: 250px;
+	margin: 0 auto;
+}
+.btn:hover {
+	background-color: #CD2626;
+	font-size: 16px;
+}
+.login-link {
+	font-size: 12px;
+	color: #444;
+	display: block;
+	margin-top: 12px;
+}
+
+.label {
+	font-size: 16px;
+	color: #FF3030;
+}
+
+.caixaTexto {
+	text-align: center;
+	font-size: 16px;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+}

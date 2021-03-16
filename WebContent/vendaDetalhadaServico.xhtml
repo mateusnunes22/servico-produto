@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+				</h:form>
+				<ul class="menu3">
+					<li><a href="vendaPorCategoriaRelatorio.jsf">Voltar</a></li>
+				</ul>
+				<br></br>
+				<rich:dataTable id="Contaspagar"
+					onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+					onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+					style="width:750px; border:2px"
+					value="#{vendaBeanRpt.detalhamentoServico}" var="c"
+					rendered="#{not empty vendaBeanRpt.detalhamentoServico}"
+					rows="10">
+
+
+					<f:facet name="header">
+						<rich:columnGroup>
+							<rich:column colspan="15">
+								<h:outputText value="Lista de Serviços" />
+							</rich:column>
+							<rich:column breakRowBefore="true">
+								<h:outputText value="Cliente" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Funcionario" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Servico" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Data" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Hora" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Valor" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Forma" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Parcelas" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Observação" />
+							</rich:column>
+						</rich:columnGroup>
+					</f:facet>
+
+					<rich:column>
+						<h:outputText value="#{c.cliente.nome}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.funcionario.nome}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.servico.nome}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.data}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.hora}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.valor}" >
+							<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+						</h:outputText>
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.formaPagamento}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.numeroParcela}" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{c.observacao}" />
+					</rich:column>
+
+					<f:facet name="footer">
+						<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+					</f:facet>
+				</rich:dataTable>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

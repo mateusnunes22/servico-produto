@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<title>Estetica</title>
+	<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+	<link href="LayoutNovo/CSS/login.css" rel="stylesheet" type="text/css" />
+	<link href="LayoutNovo/CSS/rodape.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+	<f:view>
+		<div class="login">
+			<div class="login-screen">
+				<div class="app-title">
+					<div id="login-form">
+			<h3>Sistema</h3>
+				<h:form>
+					<fieldset style="border: none">
+					<h:panelGrid columns="1">
+							<div class="control-group">
+									<h:outputText value="Usuário: " styleClass="label"></h:outputText>
+									<h:inputText id="email" value="#{usuarioBean.usuario.nome}"
+							title="email" styleClass="caixaTexto"></h:inputText>
+							<label class="login-field-icon fui-user" for="login-name"></label>
+								</div>
+								<div class="control-group">
+									<h:outputText value="Senha: " styleClass="label"></h:outputText>
+							
+						<h:inputSecret id="password" redisplay="false"
+							value="#{usuarioBean.usuario.senha}" styleClass="caixaTexto"></h:inputSecret>
+							<label class="login-field-icon fui-lock" for="login-pass"></label>
+							</div>
+								<h:commandButton
+									value="Logar" action="#{usuarioBean.logar}" styleClass="btn btn-primary btn-large btn-block"></h:commandButton>
+					</h:panelGrid>
+					
+					 <rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages> 
+					</fieldset>
+				</h:form>
+			<br />
+			</div>
+			</div>
+			</div>
+		</div>
+		<div id="rodape"></div>
+	</f:view>
+</h:body>
+</html>

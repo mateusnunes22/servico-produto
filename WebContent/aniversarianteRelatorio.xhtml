@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+
+					<rich:dataTable id="aniversariantes"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px"
+						var="c" value="#{aniversarianteBeanRpt.relatorio}"
+						rendered="#{not empty aniversarianteBeanRpt.relatorio}" rows="10">
+
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="4">
+									<h:outputText value="Lista de aniversariantes" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Cliente" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Aniversário" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Telefone" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Email" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.nascimento}" >
+								<f:convertDateTime pattern="dd/MM" />
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.fone}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.email}" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

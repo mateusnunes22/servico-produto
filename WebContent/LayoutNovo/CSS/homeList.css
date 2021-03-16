@@ -1,0 +1,292 @@
+@charset "utf-8";
+* {
+	box-sizing: border-box;
+}
+*:focus {
+	outline: none;
+}
+body {
+	background: #eaeaea;
+	color: #999;
+	font: 100%/1.5em sans-serif;
+	margin: 0;
+}
+.login {
+	margin: 20px auto;
+	width: 270px;
+	height: 50px;
+}
+.login-screen {
+	background-color: #FFF;
+	padding: 20px;
+	border-radius: 5px;
+	height: 340px;
+}
+.app-title {
+	text-align: center;
+	color: #FF3030;
+}
+.login-form {
+	text-align: center;
+}
+.control-group {
+	margin-bottom: 5px;
+	text-align: center;
+}
+input {
+	/*
+	text-align: left;
+	background-color: #ECF0F1;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 200;
+	padding: 10px 0;
+	width: 200px;
+	transition: border .5s;
+	*/
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+}
+.true {
+	background: #dcdcdc;
+	padding: 10px 20px;
+	border-radius: 10px 0 0 10px;
+	border: 0 none;
+	width: 180px;
+	height: 40px;
+	color: #000000;
+}
+input:focus {
+	border: 2px solid #FF3030;
+	box-shadow: none;
+}
+.btn {
+	border: 2px solid transparent;
+	background: #FF3030;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 0;
+	text-decoration: none;
+	text-shadow: none;
+	border-radius: 3px;
+	box-shadow: none;
+	transition: 0.25s;
+	display: block;
+	width: 200px;
+	margin: 0 auto;
+}
+.btn:hover {
+	background-color: #CD2626;
+}
+.login-link {
+	font-size: 12px;
+	color: #444;
+	display: block;
+	margin-top: 12px;
+}
+
+.label {
+	font-weight: bold;
+	font-size: 16px;
+	color: #FF3030;
+}
+.caixaTexto {
+	font-size: 16px;
+}
+
+#impmi2 h3{
+	font-weight: bold;
+	color: #FF3030;
+	text-align: center;
+	font-size: 18px;
+}
+
+#impmi2 input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+	font-size: 16px;
+}
+
+#impmi2 input:focus {
+	outline: none;
+	font-size: 16px;
+}
+
+#impmi2 input[type="submit"] {
+	cursor: pointer;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;	
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+#impmi2 {
+	margin: 50px auto;
+	width: 900px;
+}
+
+#impmi2 select {
+	font-size: 16.5px;
+	text-align: left;
+}
+
+#impmi2 input[type="submit"] {
+	color: #eee;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: #FF3030;
+	border-radius: 6px;
+	margin-left: -3px;
+	color: #fff;
+	font: 'sans-serif';
+	padding: 10px 20px;
+	border-radius: 0 10px 10px 0;
+	border: 0 none;
+	font-weight: bold;
+	font-size: 14px;
+	width: 100px;
+	height: 42px;
+}
+
+#impmi2 input[type="submit"]:hover {
+	color: #eee;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: #CD2626;
+	border-radius: 6px;
+	margin-left: -3px;
+	color: #fff;
+	font: 'sans-serif';
+	padding: 10px 20px;
+	border-radius: 0 10px 10px 0;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+#impmi2 footer {
+	font-size: 12px;
+	margin-top: 16px;
+}
+
+.info {
+	background: #e5e5e5;
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	margin: 0 10px 0 0;
+	text-align: center;
+	width: 20px;
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+}
+
+.buscP {
+	font-weight: bold;
+	color: #FF3030;
+}
+
+#impmi2 select{
+	font-size: 16.5px;
+}
+
+#impmisec input {
+	font-size: 16px;
+}
+
+#impmisec input[type="submit"] {
+	color: #eee;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: #FF3030;
+	border-radius: 6px;
+	margin-left: -3px;
+	color: #fff;
+	font: 'sans-serif';
+	padding: 10px 20px;
+	border-radius: 0 10px 10px 0;
+	border: 0 none;
+	font-weight: bold;
+	font-size: 14px;
+	width: 140px;
+	height: 42px;
+}
+
+#impmisec input[type="submit"]:hover {
+	color: #eee;
+	padding-left: 10px;
+	padding-top: 10px;
+	background: #CD2626;
+	border-radius: 6px;
+	margin-left: -3px;
+	color: #fff;
+	font: 'sans-serif';
+	padding: 10px 20px;
+	border-radius: 0 10px 10px 0;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.menu2{
+	list-style: none;
+	border: 1px solid #c0c0c0;
+	float: left;
+	border: none;
+	margin: 0;
+	display: block;
+	display: inline;
+	margin: 0 18%;
+}
+.menu2 li{
+	position: relative;
+	float: left;
+	margin-left: 10px;
+	display: inline;
+	
+}
+.menu2 li a{
+	background: #FF3030;
+	color:#fff;
+	text-decoration: none;
+	padding: 1px 5px;
+	display: block;
+	font-size: 14px;
+	border-radius: 15px;
+}
+.menu2 li a:hover{
+	background: #CD2626;
+	color:#fff;
+}
+.menu2 li  ul{
+	position:absolute;
+	top:25px;
+	left:0;
+	background-color:#fff;
+	display:none;
+}  
+.menu2 li:hover ul, .menu li.over ul{
+	display:block;
+}
+.menu2 li ul li{
+	border:1px solid #c0c0c0;
+	display:block;
+	width:150px;
+}

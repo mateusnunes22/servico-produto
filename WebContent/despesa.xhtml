@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Venda</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<script src="Scripts/jquery.price_format.1.7.js" type="text/javascript" ></script>
+			<div id="impmi">
+				<h:form>
+					<h3>Registro de Despesa</h3>
+					<h:panelGrid columns="2">
+						<h:outputText value="Despesa Geral" styleClass="label"></h:outputText>
+						<h:outputText value=""></h:outputText>
+
+						<h:outputText value="Valor" styleClass="label"></h:outputText>
+						
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valorcaixaent2" value="#{despesaBean.despesa.valor }" required="true" requiredMessage="#{msg['despesa.required.valor']}"
+								size="20" styleClass="caixaTexto">
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:inputText>
+							<rich:jQuery selector="#valorcaixaent2" timing="domready" 
+								query="priceFormat({
+						    		prefix: '',
+						    		centsSeparator: ',',
+						    		thousandsSeparator: '.'
+								})"  />
+						</h:panelGroup>
+
+						<h:outputText value="Observação" styleClass="label"></h:outputText>
+						<h:inputText id="observacao" styleClass="areadetexto" value="#{despesaBean.despesa.observacao}" size="20"></h:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Adicionar" action="#{despesaBean.salvar}"></h:commandButton>
+					</h:panelGrid>
+
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+					<br></br>
+
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

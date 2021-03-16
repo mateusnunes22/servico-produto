@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Funcionário</h3>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Nome" styleClass="label"></h:outputText>
+						<h:inputText id="nomef" value="#{funcionarioBean.funcionario.nome}" size="20" requiredMessage="#{msg['funcionario.required.nome']}"
+							required="true" styleClass="caixaTexto" maxlength="80">
+							<f:ajax execute="keypress" render="messages" listener="#{funcionarioBean.verificarNome}" />
+						</h:inputText>
+
+						<h:outputText value="Especialidade" styleClass="label"></h:outputText>
+						<h:inputText id="especialidadef" required="true" requiredMessage="#{msg['funcionario.required.especialidade']}" 
+							value="#{funcionarioBean.funcionario.especialidade }" size="20"
+							styleClass="caixaTexto" maxlength="40"></h:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Salvar" action="#{funcionarioBean.salvar}"></h:commandButton>
+
+					</h:panelGrid>
+
+					<rich:messages id="messages" layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+
+					</rich:messages>
+
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

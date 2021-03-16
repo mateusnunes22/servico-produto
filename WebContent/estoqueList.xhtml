@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi2">
+				<h:form>
+					<h3>Estoque de produtos</h3>
+					<br></br>
+					<rich:dataTable id="estoqueBaixo"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px" value="#{estoqueBean.listaEstoqueBaixo}"
+						var="c" rendered="#{not empty estoqueBean.listaEstoqueBaixo}"
+						rows="8">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="15">
+									<h:outputText
+										value="Lista de Produtos em baixa (#{estoqueBean.estoqueList.size})" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Produto" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantidade Atual" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantidade Baixa" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.produto.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.quantidadeAtual}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.quantidadeBaixa}" />
+						</rich:column>
+						<f:facet name="footer">
+							<rich:dataScroller id="dss" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+					<br></br>
+					<h:panelGrid columns="2">
+						<h:outputText id="out9" value="#{msg['default.label.produto']}" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="produtos" value="#{estoqueBean.produto}" converter="#{produtoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Todos)" noSelectionOption="true"/>
+						    <f:selectItems value="#{estoqueBean.produtos}" var="p" itemValue="#{p}" itemLabel="#{p.nome}" />
+						</h:selectOneMenu>
+
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{estoqueBean.atualizar}"></h:commandButton>
+					</h:panelGrid>
+
+					<br></br>
+					<rich:dataTable id="Contaspagar" rows="10" style="width:750px; border:2px"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						var="c" value="#{estoqueBean.lista}" rendered="#{not empty estoqueBean.lista}">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="15">
+									<h:outputText
+										value="Lista de Produtos (#{estoqueBean.estoqueList.size2})" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Produto" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantidade Total" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantidade Atual" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantidade Baixa" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="subtrair estoque" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.produto.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.quantidadeTotal}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.quantidadeAtual}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.quantidadeBaixa}" />
+						</rich:column>
+						<rich:column>
+							<h:commandButton action="#{estoqueBean.baixarEstoque(c)}"
+								image="LayoutNovo/imagens/subtrair.png" />
+						</rich:column> 
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+					</rich:dataTable>
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+
+					</rich:messages>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

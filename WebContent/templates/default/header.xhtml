@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<h:form>
+			<div id="topo">
+				#{configuracaoRepo.nomeEmpresa}
+				<ui:include src="/snippets/painel_sistema.xhtml" />
+			</div>
+			<p>
+				<ul class="menu">
+					<li><a href="home.jsf">Vendas</a></li>
+					<li><a href="cadastro.jsf">Cadastros</a></li>
+					<li><a href="compra.jsf">Compras</a></li>
+					<li><a href="despesa.jsf">Despesas</a></li>
+					<li><a href="estoqueList.jsf">Estoque</a></li>
+					<li><a href="relatorio.jsf">Relatórios</a></li>
+					<li><h:commandLink action="#{usuarioBean.logout}" value="Sair"></h:commandLink>
+					</li>
+				</ul>
+			</p>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

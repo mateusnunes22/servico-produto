@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Categoria</h3>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Nome da categoria" styleClass="label"></h:outputText>
+						<h:inputText id="nomecli" required="true" requiredMessage="#{msg['categoria.required.nome']}"
+							value="#{categoriaBean.categoria.descricao}" size="20"
+							styleClass="caixaTexto" maxlength="80"></h:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Salvar" action="#{categoriaBean.salvar}"></h:commandButton>
+					</h:panelGrid>
+
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

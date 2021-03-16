@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi2">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Produto</h3>
+
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+
+					</rich:messages>
+
+					<h:panelGrid width="750">
+						<h:panelGrid columns="4">
+
+							<h:outputText value="Produto" styleClass="label"></h:outputText>
+							<h:inputText value="#{produtoBean.produtoList.texto}" size="40"
+								styleClass="true"></h:inputText>
+							<h:commandButton value="Buscar" action="#{produtoBean.atualizar}"></h:commandButton>
+							<h:commandButton action="#{produtoBean.novo}" value="Novo"
+								styleClass="novcli" />
+						</h:panelGrid>
+						<br />
+						<rich:dataTable id="Contaspagar"
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							style="width:750px; border:2px" value="#{produtoBean.lista}" var="c"
+							rendered="#{not empty produtoBean.lista}" rows="10" >
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="5">
+										<h:outputText
+											value="Lista de Produtos (#{produtoBean.produtoList.size })" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Produto" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Categoria" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Valor Compra" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Valor Venda" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Editar" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.categoria.descricao}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.valorCompra}" >
+									<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.valorVenda}" >
+									<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{produtoBean.editar(c)}"
+									image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+							<f:facet name="footer">
+								<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

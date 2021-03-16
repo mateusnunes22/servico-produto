@@ -1,0 +1,47 @@
+/*factory*/
+@CHARSET "ISO-8859-1";
+.menu{
+	list-style: none;
+	border: 1px solid #c0c0c0;
+	float: left;
+	border: none;
+	margin: 0;
+	display: block;
+	display: inline;
+	margin: 0 25%;
+}
+.menu li{
+	position: relative;
+	float: left;
+	margin-left: 10px;
+	display: inline;
+	
+}
+.menu li a{
+	background: #FF3030;
+	color:#fff;
+	text-decoration: none;
+	padding: 1px 5px;
+	display: block;
+	font-size: 14px;
+	border-radius: 15px;
+}
+.menu li a:hover{
+	background: #CD2626;
+	color:#fff;
+}
+.menu li  ul{
+	position:absolute;
+	top:25px;
+	left:0;
+	background-color:#fff;
+	display:none;
+}  
+.menu li:hover ul, .menu li.over ul{
+	display:block;
+}
+.menu li ul li{
+	border:1px solid #c0c0c0;
+	display:block;
+	width:150px;
+}

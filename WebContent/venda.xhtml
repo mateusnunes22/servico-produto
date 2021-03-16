@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Venda</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<f:event listener="#{vendaBean.init}" type="preRenderView" />
+			<script src="Scripts/jquery.maskedinput.min.js" type="text/javascript" ></script>
+			<script src="Scripts/jquery.price_format.1.7.js" type="text/javascript" ></script>
+			<div id="impmi">
+				<h:form>
+					<br />
+					<h3>Registro de Venda</h3>
+					<h:panelGrid columns="3">
+
+						<h:outputText id="out3" value="Data" styleClass="label"></h:outputText>
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy" required="true" requiredMessage="#{msg['venda.required.data']}" converterMessage="#{msg['default.validacao.data']}"
+							enableManualInput="true" value="#{vendaBean.registro.data}">
+						</rich:calendar>
+						<h:outputText value="" styleClass="caixaTexto" size="20"></h:outputText>
+
+						<h:outputText id="out5" value="Hora " styleClass="label"></h:outputText>
+						<h:inputText id="hora" value="#{vendaBean.registro.hora}" required="true" requiredMessage="#{msg['venda.required.hora']}" 
+							size="5" maxlength="5" styleClass="caixaTexto">
+							<f:convertDateTime type="time" pattern="HH:mm" />
+						</h:inputText>
+						<rich:jQuery selector="#hora" query="mask('99:99')" timing="domready" />
+						
+						<h:outputText value="Funcionário" styleClass="label"></h:outputText>						
+						<h:selectOneMenu id="funcionarios" value="#{vendaBean.registro.funcionario}"
+							required="true" requiredMessage="#{msg['venda.required.funcionario']}"  
+							converter="#{funcionarioConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBean.funcionarios}" var="f" itemValue="#{f}" itemLabel="#{f.nome}" />					
+						</h:selectOneMenu>
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="Categoria" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="categorias" value="#{vendaBean.categoria}" converter="#{categoriaConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBean.categorias}" var="categoria" itemValue="#{categoria}" itemLabel="#{categoria.descricao}" />
+						    <f:ajax render="servicos produtos valor qvalor" listener="#{vendaBean.categoriaChanged}" resetValues="true" />
+						</h:selectOneMenu>
+
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="Serviço" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="servicos" value="#{vendaBean.registro.servico}" converter="#{servicoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBean.servicos}" var="servico" itemValue="#{servico}" itemLabel="#{servico.nome}" />
+						    <f:ajax execute="change" render="produtos valor qvalor" listener="#{vendaBean.servicoChanged}" resetValues="true" />
+						</h:selectOneMenu>
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="Produto" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="produtos" value="#{vendaBean.registro.produto}" converter="#{produtoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBean.produtos}" var="produto" itemValue="#{produto}" itemLabel="#{produto.nome}" />
+						    <f:ajax execute="change" render="servicos valor qvalor" listener="#{vendaBean.produtoChanged}" resetValues="true" />
+						</h:selectOneMenu>
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="Valor" styleClass="label"></h:outputText>
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valor" value="#{vendaBean.valorAutomatico}" required="true" requiredMessage="#{msg['venda.required.valor']}"  
+								size="20" styleClass="caixaTexto, price" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:inputText>
+							<rich:jQuery id="qvalor" selector="#valor" timing="domready" 
+								query="priceFormat({
+						    		prefix: '',
+						    		centsSeparator: ',',
+						    		thousandsSeparator: '.'
+								})"  />
+						</h:panelGroup>
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="Observação" styleClass="label"></h:outputText>
+						<h:inputText value="#{vendaBean.registro.observacao}"
+							styleClass="caixaTexto" size="20" id="observacao"></h:inputText>
+
+						<h:outputText value="" styleClass="label"></h:outputText>
+
+						<h:outputText value="" styleClass="label"></h:outputText>
+						<h:outputText value="" styleClass="label"></h:outputText>
+						<h:inputText value="#{vendaBean.registro.numeroParcela}" size="1"
+							styleClass="label"></h:inputText>
+							
+						<h:commandButton value="" action="#{vendaBean.dinheiro}" 
+							image="LayoutNovo/imagens/dinheiro.png" title="Dinheiro"></h:commandButton>
+						<h:commandButton value="" action="#{vendaBean.debito}"
+							image="LayoutNovo/imagens/debito.png" title="Débito"></h:commandButton>
+						<h:commandButton value="" action="#{vendaBean.credito}"
+							image="LayoutNovo/imagens/credito.png" title="Crédito"></h:commandButton>
+
+					</h:panelGrid>
+					
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+
+					</rich:messages>
+					<br /><br />
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Valor Total:" styleClass="label"
+							rendered="#{not empty vendaBean.lista}" />
+						<h:outputText value="#{vendaBean.total }" styleClass="label"
+							rendered="#{not empty vendaBean.lista}" />
+					</h:panelGrid>
+
+					<br />
+
+					<rich:dataTable id="Contaspagar"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px"
+						value="#{vendaBean.lista}" var="c"
+						rendered="#{not empty vendaBean.lista}" rows="10">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="15">
+									<h:outputText value="Lista de serviços" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Cliente" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Funcionario" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Serviço" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Valor" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Forma" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Parcelas" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Remover" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+						
+						<rich:column>
+							<h:outputText value="#{c.cliente.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.funcionario.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.servico.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valor}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.formaPagamento}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.numeroParcela}" />
+						</rich:column>
+						<rich:column>
+							<h:commandButton action="#{vendaBean.remover(c)}"
+								image="LayoutNovo/imagens/remover.png" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+
+					<h:commandButton value="Finalizar"
+						rendered="#{not empty vendaBean.lista}"
+						action="#{vendaBean.finalizar}"></h:commandButton>
+
+
+				</h:form>
+			</div>
+		</f:view>
+</ui:define>
+</ui:composition>

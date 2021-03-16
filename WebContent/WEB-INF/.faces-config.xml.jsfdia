@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#compraRelatorio.xhtml"
+  PATH="/compraRelatorio.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#compraRelatorio.xhtml:0" NAME="item"
+   PATH="/compraRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#compraRelatorio.xhtml:1" NAME="item1"
+   PATH="/compraRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="detalhar::#compraDetalhadaProduto.xhtml"
+    NAME="output" PATH="/compraDetalhadaProduto.xhtml"
+    TARGET="rules:#compraDetalhadaProduto.xhtml" TITLE="detalhar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#venda.xhtml" PATH="/venda.xhtml"
+  SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#venda.xhtml:0" NAME="item"
+   PATH="/venda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#venda.xhtml:1" NAME="item1"
+   PATH="/venda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#home.xhtml" NAME="output"
+    PATH="/home.xhtml" TARGET="rules:#home.xhtml" TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#home.xhtml" PATH="/home.xhtml"
+  SHAPE="272,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#home.xhtml:0" NAME="item" PATH="/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#home.xhtml:1" NAME="item1" PATH="/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#home.xhtml:2" NAME="item2" PATH="/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="vender::#venda.xhtml" NAME="output"
+    PATH="/venda.xhtml" TARGET="rules:#venda.xhtml" TITLE="vender" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#home.xhtml:3" NAME="item3" PATH="/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="agendar::#agendamento.xhtml" NAME="output"
+    PATH="/agendamento.xhtml" TARGET="rules:#agendamento.xhtml"
+    TITLE="agendar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#agendamento.xhtml" PATH="/agendamento.xhtml"
+  SHAPE="528,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#agendamento.xhtml:0" NAME="item"
+   PATH="/agendamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#testeCombo.jsp" PATH="/testeCombo.jsp"
+  SHAPE="528,369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#testeCombo.jsp:0" NAME="item"
+   PATH="/testeCombo.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#agendamentoRelatorio.xhtml"
+  PATH="/agendamentoRelatorio.xhtml" SHAPE="528,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#agendamentoRelatorio.xhtml:0" NAME="item"
+   PATH="/agendamentoRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#naoUsa.jsp" PATH="/naoUsa.jsp"
+  SHAPE="528,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#naoUsa.jsp:0" NAME="item" PATH="/naoUsa.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendaAtrasada.jsp" PATH="/vendaAtrasada.jsp"
+  SHAPE="528,833,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendaAtrasada.jsp:0" NAME="item"
+   PATH="/vendaAtrasada.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#despesa.xhtml" PATH="/despesa.xhtml"
+  SHAPE="528,977,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#despesa.xhtml:0" NAME="item"
+   PATH="/despesa.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#cadastro.xhtml" PATH="/cadastro.xhtml"
+  SHAPE="528,1121,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cadastro.xhtml:0" NAME="item"
+   PATH="/cadastro.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#produto.xhtml" PATH="/produto.xhtml"
+  SHAPE="528,1233,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#produto.xhtml:0" NAME="item"
+   PATH="/produto.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#produto.xhtml:1" NAME="item1"
+   PATH="/produto.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#produtoList.xhtml" NAME="output"
+    PATH="/produtoList.xhtml" TARGET="rules:#produtoList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendaRelatorio.xhtml"
+  PATH="/vendaRelatorio.xhtml" SHAPE="528,1553,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendaRelatorio.xhtml:0" NAME="item"
+   PATH="/vendaRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#estoqueList.xhtml" PATH="/estoqueList.xhtml"
+  SHAPE="528,1729,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#estoqueList.xhtml:0" NAME="item"
+   PATH="/estoqueList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#auditoriaRelatorio.xhtml"
+  PATH="/auditoriaRelatorio.xhtml" SHAPE="528,1841,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#auditoriaRelatorio.xhtml:0" NAME="item"
+   PATH="/auditoriaRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="800,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="senha::#cadastroUsuario.xhtml" NAME="output"
+    PATH="/cadastroUsuario.xhtml" TARGET="rules:#cadastroUsuario.xhtml"
+    TITLE="senha" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#login.xhtml:1" NAME="item1"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logado::#home.xhtml" NAME="output"
+    PATH="/home.xhtml" TARGET="rules:#home.xhtml" TITLE="logado" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#produtoEdit.xhtml" PATH="/produtoEdit.xhtml"
+  SHAPE="528,1409,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#produtoEdit.xhtml:0" NAME="item"
+   PATH="/produtoEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendasRelatorio.xhtml"
+  PATH="/vendasRelatorio.xhtml" SHAPE="528,1953,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendasRelatorio.xhtml:0" NAME="item"
+   PATH="/vendasRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#fornecedor.xhtml" PATH="/fornecedor.xhtml"
+  SHAPE="272,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#fornecedor.xhtml:0" NAME="item"
+   PATH="/fornecedor.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#fornecedor.xhtml:1" NAME="item1"
+   PATH="/fornecedor.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#fornecedorList.xhtml" NAME="output"
+    PATH="/fornecedorList.xhtml" TARGET="rules:#fornecedorList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#categoria.xhtml" PATH="/categoria.xhtml"
+  SHAPE="272,529,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#categoria.xhtml:0" NAME="item"
+   PATH="/categoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#categoria.xhtml:1" NAME="item1"
+   PATH="/categoria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#categoriaList.xhtml" NAME="output"
+    PATH="/categoriaList.xhtml" TARGET="rules:#categoriaList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#categoriaList.xhtml"
+  PATH="/categoriaList.xhtml" SHAPE="528,2209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#categoriaList.xhtml:0" NAME="item"
+   PATH="/categoriaList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#categoriaList.xhtml:1" NAME="item1"
+   PATH="/categoriaList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#categoria.xhtml" NAME="output"
+    PATH="/categoria.xhtml" TARGET="rules:#categoria.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#produtoList.xhtml" PATH="/produtoList.xhtml"
+  SHAPE="272,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#produtoList.xhtml:0" NAME="item"
+   PATH="/produtoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#produtoList.xhtml:1" NAME="item1"
+   PATH="/produtoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#produto.xhtml" NAME="output"
+    PATH="/produto.xhtml" TARGET="rules:#produto.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#produtoList.xhtml:2" NAME="item2"
+   PATH="/produtoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="novo::#produto.xhtml" NAME="output"
+    PATH="/produto.xhtml" TARGET="rules:#produto.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#fornecedorList.xhtml"
+  PATH="/fornecedorList.xhtml" SHAPE="528,2065,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#fornecedorList.xhtml:0" NAME="item"
+   PATH="/fornecedorList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#fornecedorList.xhtml:1" NAME="item1"
+   PATH="/fornecedorList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#fornecedor.xhtml" NAME="output"
+    PATH="/fornecedor.xhtml" TARGET="rules:#fornecedor.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#cliente.xhtml" PATH="/cliente.xhtml"
+  SHAPE="272,705,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cliente.xhtml:0" NAME="item"
+   PATH="/cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#cliente.xhtml:1" NAME="item1"
+   PATH="/cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#clienteList.xhtml" NAME="output"
+    PATH="/clienteList.xhtml" TARGET="rules:#clienteList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#clienteList.xhtml" PATH="/clienteList.xhtml"
+  SHAPE="528,2353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#clienteList.xhtml:0" NAME="item"
+   PATH="/clienteList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#clienteList.xhtml:1" NAME="item1"
+   PATH="/clienteList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#cliente.xhtml" NAME="output"
+    PATH="/cliente.xhtml" TARGET="rules:#cliente.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#relatorio.xhtml" PATH="/relatorio.xhtml"
+  SHAPE="528,2497,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#relatorio.xhtml:0" NAME="item"
+   PATH="/relatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#relatorio.xhtml:1" NAME="item1"
+   PATH="/relatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#funcionario.xhtml" PATH="/funcionario.xhtml"
+  SHAPE="272,849,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#funcionario.xhtml:0" NAME="item"
+   PATH="/funcionario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#funcionario.xhtml:1" NAME="item1"
+   PATH="/funcionario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#funcionarioList.xhtml" NAME="output"
+    PATH="/funcionarioList.xhtml" TARGET="rules:#funcionarioList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#funcionarioList.xhtml"
+  PATH="/funcionarioList.xhtml" SHAPE="528,2641,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#funcionarioList.xhtml:0" NAME="item"
+   PATH="/funcionarioList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#funcionarioList.xhtml:1" NAME="item1"
+   PATH="/funcionarioList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#funcionario.xhtml" NAME="output"
+    PATH="/funcionario.xhtml" TARGET="rules:#funcionario.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#rendimentoRelatorio.xhtml"
+  PATH="/rendimentoRelatorio.xhtml" SHAPE="528,2785,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#rendimentoRelatorio.xhtml:0" NAME="item"
+   PATH="/rendimentoRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#clienteRelatorio.xhtml"
+  PATH="/clienteRelatorio.xhtml" SHAPE="272,993,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#clienteRelatorio.xhtml:0" NAME="item"
+   PATH="/clienteRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#clienteRelatorio.xhtml:1" NAME="item1"
+   PATH="/clienteRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="detalhar::#clienteDetalhadoRelatorio.xhtml"
+    NAME="output" PATH="/clienteDetalhadoRelatorio.xhtml"
+    TARGET="rules:#clienteDetalhadoRelatorio.xhtml" TITLE="detalhar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#clienteDetalhadoRelatorio.xhtml"
+  PATH="/clienteDetalhadoRelatorio.xhtml" SHAPE="528,2897,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#clienteDetalhadoRelatorio.xhtml:0"
+   NAME="item" PATH="/clienteDetalhadoRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendaPorCategoriaRelatorio.xhtml"
+  PATH="/vendaPorCategoriaRelatorio.xhtml" SHAPE="32,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendaPorCategoriaRelatorio.xhtml:0"
+   NAME="item" PATH="/vendaPorCategoriaRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalharProduto::#vendaDetalhadaProduto.xhtml" NAME="output"
+    PATH="/vendaDetalhadaProduto.xhtml"
+    TARGET="rules:#vendaDetalhadaProduto.xhtml" TITLE="detalharProduto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#vendaPorCategoriaRelatorio.xhtml:1"
+   NAME="item1" PATH="/vendaPorCategoriaRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalharServico::#vendaDetalhadaServico.xhtml" NAME="output"
+    PATH="/vendaDetalhadaServico.xhtml"
+    TARGET="rules:#vendaDetalhadaServico.xhtml" TITLE="detalharServico" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#vendaPorCategoriaRelatorio.xhtml:2"
+   NAME="item2" PATH="/vendaPorCategoriaRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendaPorProdutoRelatorio.xhtml"
+  PATH="/vendaPorProdutoRelatorio.xhtml" SHAPE="528,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#vendaPorProdutoRelatorio.xhtml:0" NAME="item"
+   PATH="/vendaPorProdutoRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#servico.xhtml" PATH="/servico.xhtml"
+  SHAPE="528,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#servico.xhtml:0" NAME="item"
+   PATH="/servico.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#servico.xhtml:1" NAME="item1"
+   PATH="/servico.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#servicoList.xhtml" NAME="output"
+    PATH="/servicoList.xhtml" TARGET="rules:#servicoList.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#compra.xhtml" PATH="/compra.xhtml"
+  SHAPE="528,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#compra.xhtml:0" NAME="item"
+   PATH="/compra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#servicoEdit.xhtml" PATH="/servicoEdit.xhtml"
+  SHAPE="528,3009,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#servicoEdit.xhtml:0" NAME="item"
+   PATH="/servicoEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#servicoList.xhtml" PATH="/servicoList.xhtml"
+  SHAPE="272,1569,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#servicoList.xhtml:0" NAME="item"
+   PATH="/servicoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#servicoList.xhtml:1" NAME="item1"
+   PATH="/servicoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#servico.xhtml" NAME="output"
+    PATH="/servico.xhtml" TARGET="rules:#servico.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#servicoList.xhtml:2" NAME="item2"
+   PATH="/servicoList.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="novo::#servico.xhtml" NAME="output"
+    PATH="/servico.xhtml" TARGET="rules:#servico.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#funcionarioRelatorio.xhtml"
+  PATH="/funcionarioRelatorio.xhtml" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#funcionarioRelatorio.xhtml:0" NAME="item"
+   PATH="/funcionarioRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#funcionarioRelatorio.xhtml:1" NAME="item1"
+   PATH="/funcionarioRelatorio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhar::#funcionarioDetalhadoRelatorio.xhtml" NAME="output"
+    PATH="/funcionarioDetalhadoRelatorio.xhtml"
+    TARGET="rules:#funcionarioDetalhadoRelatorio.xhtml" TITLE="detalhar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#vendaDetalhadaProduto.xhtml"
+  PATH="/vendaDetalhadaProduto.xhtml" SHAPE="272,1137,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#compraDetalhadaProduto.xhtml"
+  PATH="/compraDetalhadaProduto.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#vendaDetalhadaServico.xhtml"
+  PATH="/vendaDetalhadaServico.xhtml" SHAPE="272,1425,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#funcionarioDetalhadoRelatorio.xhtml"
+  PATH="/funcionarioDetalhadoRelatorio.xhtml" SHAPE="272,1745,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#cadastroUsuario.xhtml"
+  PATH="/cadastroUsuario.xhtml" SHAPE="32,369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cadastroUsuario.xhtml:0" NAME="item"
+   PATH="/cadastroUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="certo::#home.xhtml" NAME="output"
+    PATH="/home.xhtml" TARGET="rules:#home.xhtml" TITLE="certo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#cadastroUsuario.xhtml:1" NAME="item1"
+   PATH="/cadastroUsuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

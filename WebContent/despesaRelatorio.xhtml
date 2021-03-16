@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>					
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Periodo:" styleClass="label" />
+						<h:outputText value="" />
+
+						<h:outputText id="out3" value="Inicial" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="false" value="#{despesaBeanRpt.dataInicial}">
+						</rich:calendar>
+
+						<h:outputText id="out7" value="Final" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datfi" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="false" value="#{despesaBeanRpt.dataFinal}">
+						</rich:calendar>
+						
+						<h:outputText id="out" value=""></h:outputText>
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{despesaBeanRpt.atualizar}"></h:commandButton>
+
+					</h:panelGrid>
+
+
+					<rich:dataTable id="relatorioTotal"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px" value="#{despesaBeanRpt.relatorioTotal}"
+						var="c" rendered="#{not empty despesaBeanRpt.relatorioTotal}"
+						rows="10">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="3">
+									<h:outputText value="Total de despesas" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Usuário" />
+								</rich:column>
+								<rich:column >
+									<h:outputText value="Valor Total" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Observação" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.usuario.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valor}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.observacao}" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+
+					<h:outputText id="resultado"
+						value="Sem resultados para busca realizada"
+						rendered="#{empty despesaBeanRpt.relatorioTotal}"></h:outputText>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

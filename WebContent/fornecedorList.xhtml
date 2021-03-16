@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi2">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Fornecedor</h3>
+
+					<h:panelGrid width="750">
+						<h:panelGrid columns="4">
+
+							<h:outputText value="Fornecedor" styleClass="label"></h:outputText>
+							<h:inputText value="#{fornecedorBean.fornecedorList.texto}"
+								size="40" styleClass="true"></h:inputText>
+							<h:commandButton value="Buscar"
+								action="#{fornecedorBean.atualizar}"></h:commandButton>
+							<h:commandButton action="#{fornecedorBean.novo}" value="Novo"
+								styleClass="novcli" />
+						</h:panelGrid>
+						<br />
+
+						<rich:dataTable id="Contaspagar"
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							style="width:750px; border:2px" value="#{fornecedorBean.lista}" var="c"
+							rendered="#{not empty fornecedorBean.lista}" rows="10">
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="15">
+										<h:outputText
+											value="Lista de Fornecedores (#{fornecedorBean.fornecedorList.size })" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Nome" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Contato" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Telefone" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Celular" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Editar" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.contato}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.telefone}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.celular}" />
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{fornecedorBean.editar(c)}"
+									image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+							<f:facet name="footer">
+								<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

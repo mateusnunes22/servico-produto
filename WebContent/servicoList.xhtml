@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi2">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Serviço</h3>
+
+					<h:panelGrid width="750">
+						<h:panelGrid columns="4">
+							<h:outputText value="Serviço" styleClass="label"></h:outputText>
+							<h:inputText value="#{servicoBean.servicoList.texto}" size="40"
+								styleClass="true"></h:inputText>
+							<h:commandButton value="Buscar" action="#{servicoBean.atualizar}"></h:commandButton>
+							<h:commandButton action="#{servicoBean.novo}" value="Novo"
+								styleClass="novcli" />
+						</h:panelGrid>
+						<br />
+
+						<rich:dataTable id="Contaspagar" rows="10" style="width:750px; border:2px"  
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							var="c" value="#{servicoBean.lista}" rendered="#{not empty servicoBean.lista}">
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="4">
+										<h:outputText
+											value="Listas de Serviços (#{servicoBean.servicoList.size })" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Nome" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Categoria" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Valor" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Editar" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.categoria.descricao}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.valor}" >
+									<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{servicoBean.editar(c)}"
+									image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+							<f:facet name="footer">
+								<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

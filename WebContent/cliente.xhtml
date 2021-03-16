@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<f:event listener="#{clienteBean.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Cliente</h3>
+
+					<h:panelGrid columns="2">
+
+						<h:outputText value="Nome" styleClass="label"></h:outputText>
+						<h:inputText id="nomecli" value="#{clienteBean.cliente.nome}" size="20" required="true" requiredMessage="#{msg['cliente.required.nome']}"
+							styleClass="caixaTexto" maxlength="80">
+							<f:ajax execute="keypress" render="messages" listener="#{clienteBean.verificarNome}" />
+						</h:inputText>
+
+						<h:outputText value="Telefone" styleClass="label"></h:outputText>
+						<h:inputText id="telcli" value="#{clienteBean.cliente.fone}"
+							size="20" styleClass="caixaTexto" maxlength="45"></h:inputText>
+
+						<h:outputText value="E-mail" styleClass="label"></h:outputText>
+						<h:inputText id="tel2cli" value="#{clienteBean.cliente.email}" 
+							size="20" styleClass="caixaTexto" maxlength="80"></h:inputText>
+							
+						<h:outputText value="Endereço" styleClass="label"></h:outputText>
+						<h:inputText value="#{clienteBean.cliente.endereco}" 
+							size="20" styleClass="caixaTexto" maxlength="200"></h:inputText>
+
+						<h:outputLabel value="Data:" styleClass="label" />
+						<rich:calendar popup="true" datePattern="dd/MM/yyyy" enableManualInput="true" converterMessage="#{msg['default.validacao.data']}" 
+							value="#{clienteBean.cliente.nascimento}" >
+						</rich:calendar>
+						
+						<h:outputText value="Funcionário" styleClass="label" rendered="#{clienteBean.cliente.id == null}"></h:outputText>
+						<h:selectOneMenu id="funcionarios" rendered="#{clienteBean.cliente.id == null}" converter="#{funcionarioConverter}" 
+							value="#{clienteBean.cliente.funcionario}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true" />
+							<f:selectItems value="#{clienteBean.funcionarios}" var="f" itemValue="#{f}" itemLabel="#{f.nome}" />
+							<f:ajax execute="change" render="clientes" listener="#{clienteBean.funcionarioChanged}" />
+						</h:selectOneMenu>
+						
+						<h:outputText value="Cliente" styleClass="label" rendered="#{clienteBean.cliente.id == null}"></h:outputText>
+						<h:selectOneMenu id="clientes" rendered="#{clienteBean.cliente.id == null}" converter="#{clienteConverter}" 
+							value="#{clienteBean.cliente.cliente}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true" />
+							<f:selectItems value="#{clienteBean.clientes}" var="cliente" itemValue="#{cliente}" itemLabel="#{cliente.nome}" />
+							<f:ajax execute="change" render="funcionarios"  listener="#{clienteBean.clienteChanged}" />
+						</h:selectOneMenu>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Salvar" action="#{clienteBean.salvar}"></h:commandButton>
+					</h:panelGrid>
+
+					<rich:messages id="messages" layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Periodo:" styleClass="label" />
+						<h:outputText value="" />
+
+						<h:outputText id="out3" value="Inicial" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true"
+							value="#{rendimentoBeanRpt.rpt.data.dataInicial}">
+						</rich:calendar>
+
+						<h:outputText id="out7" value="Final" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datfi" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true"
+							value="#{rendimentoBeanRpt.rpt.data.dataFinal}">
+						</rich:calendar>
+
+						<h:outputText id="out" value=""></h:outputText>
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{rendimentoBeanRpt.atualizar}"></h:commandButton>
+
+					</h:panelGrid>
+
+
+					<rich:dataTable id="Contaspagar"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px" value="#{rendimentoBeanRpt.relatorio}"
+						var="c" rendered="#{not empty rendimentoBeanRpt.relatorio}"
+						rows="5">
+
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="15">
+									<h:outputText value="Rendimentos do salão" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Faturamento" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Despesas" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Compras" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Lucro bruto" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.faturamento}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.despesa}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.compra}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.lucro}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+
+					</rich:dataTable>
+
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

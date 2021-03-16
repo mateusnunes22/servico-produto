@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Clientes</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<div id="impmi2">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Cliente</h3>
+
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+
+					<h:panelGrid width="750">
+						<h:panelGrid columns="4">
+							<h:outputText value=" Cliente" styleClass="label"></h:outputText>
+							<h:inputText value="#{clienteBean.clienteList.texto}" size="40"
+								styleClass="true"></h:inputText>
+							<h:commandButton value="Buscar" action="#{clienteBean.atualizar}"></h:commandButton>
+							<h:commandButton action="#{clienteBean.novo}" value="Novo"
+								styleClass="novcli" />
+						</h:panelGrid>
+						<br />
+
+						<rich:dataTable id="clienteList" rows="10"
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							style="width:750px; border:2px"  
+							var="c" value="#{clienteBean.lista}" rendered="#{not empty clienteBean.lista}">
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="6">
+										<h:outputText
+											value="Listas de Clientes (#{clienteBean.clienteList.size})" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Nome" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Telefone" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="E-mail" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Nascimento" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Indicação" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Editar" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.fone}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.email}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.nascimento}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.cliente.nome != null ? c.cliente.nome : c.funcionario.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{clienteBean.editar(c)}"
+									image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+							<f:facet name="footer">
+								<rich:dataScroller id="scroller" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

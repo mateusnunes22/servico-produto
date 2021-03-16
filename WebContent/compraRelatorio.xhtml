@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<f:event listener="#{compraBeanRpt.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>					
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Periodo:" styleClass="label" />
+						<h:outputText value="" />
+
+						<h:outputText id="out3" value="Inicial" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true" value="#{compraBeanRpt.dataInicial}">
+						</rich:calendar>
+
+						<h:outputText id="out7" value="Final" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datfi" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true" value="#{compraBeanRpt.dataFinal}">
+						</rich:calendar>
+
+						<h:outputText id="out9" value="Produto" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="produtoNome" value="#{compraBeanRpt.produto}" converter="#{produtoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Todos)" noSelectionOption="true"/>
+						    <f:selectItems value="#{compraBeanRpt.produtos}" var="produto" itemValue="#{produto}" itemLabel="#{produto.nome}" />
+						</h:selectOneMenu>
+						
+						<h:outputText id="out" value=""></h:outputText>
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{compraBeanRpt.atualizar}"></h:commandButton>
+
+					</h:panelGrid>
+
+
+					<rich:dataTable id="relatorioTotal"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px" value="#{compraBeanRpt.relatorioTotal}"
+						var="c" rendered="#{not empty compraBeanRpt.relatorioTotal}"
+						rows="10">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="3">
+									<h:outputText value="Total de compras" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Produto" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Valor Total" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Detalhamento" />
+								</rich:column>
+
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valorVenda}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:commandButton action="#{compraBeanRpt.detalharCompra(c)}" image="LayoutNovo/imagens/editar.png" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+
+					<h:outputText id="resultado"
+						value="Sem resultados para busca realizada"
+						rendered="#{empty compraBeanRpt.relatorioTotal}"></h:outputText>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

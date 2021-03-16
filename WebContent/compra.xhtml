@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Venda</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<script src="Scripts/jquery.price_format.1.7.js" type="text/javascript" ></script>
+			
+			<f:event listener="#{compraBean.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<h3>Registro de Compra</h3>
+					<h:panelGrid columns="2">
+						<h:outputText value="#{msg['default.label.fornecedor']}" styleClass="label"></h:outputText>						
+						<h:selectOneMenu id="fornecedores" required="true" requiredMessage="#{msg['compra.required.fornecedor']}" 
+							value="#{compraBean.compra.fornecedor}" converter="#{fornecedorConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{compraBean.fornecedores}" var="f" itemValue="#{f}" itemLabel="#{f.nome}" />					
+						</h:selectOneMenu>
+						
+						<h:outputText value="#{msg['default.label.produto']}" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="produtos" required="true" requiredMessage="#{msg['compra.required.produto']}" 
+							value="#{compraBean.compra.produto}" converter="#{produtoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true"/>
+						    <f:selectItems value="#{compraBean.produtos}" var="p" itemValue="#{p}" itemLabel="#{p.nome}" />
+						    <f:ajax execute="change" render="qvalor valorcaixaent2" listener="#{compraBean.produtoChanged}" resetValues="true" />
+						</h:selectOneMenu>
+
+						<h:outputText value="#{msg['default.label.quantidade']}" styleClass="label"></h:outputText>
+						<h:inputText id="quantidade" required="true" value="#{compraBean.quantidade}"
+							size="20"></h:inputText>
+
+						<h:outputText value="#{msg['default.label.valor']}" styleClass="label"></h:outputText>
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valorcaixaent2" class="price" required="true" requiredMessage="#{msg['compra.required.valor']}" 
+								value="#{compraBean.compra.valor}" size="20">
+							    <f:convertNumber pattern="#,##0.00"></f:convertNumber>  
+							</h:inputText>
+							<rich:jQuery id="qvalor" selector="#valorcaixaent2" timing="domready" 
+								query="priceFormat({
+						    		prefix: '',
+						    		centsSeparator: ',',
+						    		thousandsSeparator: '.'
+								})"  />
+						</h:panelGroup>
+
+						<h:outputText value="#{msg['default.label.observacao']}" styleClass="label"></h:outputText>
+						<h:inputText id="observacao" styleClass="areadetexto" value="#{compraBean.compra.observacao}" size="20"></h:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Adicionar" action="#{compraBean.salvar}"></h:commandButton>
+
+					</h:panelGrid>
+
+					<rich:messages layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+
+					<br></br>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<title>Novo</title>
+	<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+	<link href="LayoutNovo/CSS/login.css" rel="stylesheet" type="text/css" />
+	<link href="LayoutNovo/CSS/rodape.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+	<f:view>
+		<div id="impmi">
+			<h:form>
+				<h3>Novo Usuário</h3>
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Usuário" styleClass="label" />
+					<h:inputText id="nomeUsuario" value="#{usuarioBean.usuario.nome}"
+						size="45" required="true" styleClass="caixaTexto" maxlength="80" />
+
+					<h:outputText value="E-mail" styleClass="label" />
+					<h:inputText id="email" value="#{usuarioBean.usuario.email }"
+						size="45" styleClass="caixaTexto" maxlength="80" />
+
+					<h:outputText value="Senha" styleClass="label" />
+					<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha }"
+						size="45" required="true" redisplay="false"
+						styleClass="caixaTexto" maxlength="60" />
+
+					<h:outputText value="Confirmação de senha" styleClass="label" />
+					<h:inputSecret id="senhaVerificacao"
+						value="#{usuarioBean.usuarioLogin.senha }" size="45"
+						required="true" redisplay="false" styleClass="caixaTexto"
+						maxlength="60" />
+
+					<h:outputText value=""></h:outputText>
+					<h:commandButton value="Salvar" action="#{usuarioBean.salvar}"></h:commandButton>
+				</h:panelGrid>
+
+				<rich:messages layout="table" infoLabelClass="messageInfo"
+					errorLabelClass="messageError">
+
+					<f:facet name="infoMarker">
+						<h:graphicImage value="imagenss/check.png" />
+					</f:facet>
+
+					<f:facet name="errorMarker">
+						<h:graphicImage value="imagenss/fail.png" />
+					</f:facet>
+				</rich:messages>
+
+			</h:form>
+		</div>
+	</f:view>
+</h:body>
+</html>

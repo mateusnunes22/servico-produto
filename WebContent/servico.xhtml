@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<script src="Scripts/jquery.price_format.1.7.js" type="text/javascript" ></script>
+			<f:event listener="#{servicoBean.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Serviço</h3>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Nome" styleClass="label"></h:outputText>
+						<h:inputText id="nome" value="#{servicoBean.servico.nome}" size="20" requiredMessage="#{msg['servico.required.nome']}"
+							styleClass="caixaTexto" maxlength="80">
+							<f:ajax execute="keypress" render="messages" listener="#{servicoBean.verificarNome}" />
+						</h:inputText>
+
+						<h:outputText value="Valor padrão" styleClass="label"></h:outputText>
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valorcaixaent2" value="#{servicoBean.servico.valor}" size="20" styleClass="caixaTexto"
+								requiredMessage="#{msg['servico.required.valor']}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:inputText>
+							<rich:jQuery selector="#valorcaixaent2" timing="domready" 
+								query="priceFormat({
+							    		prefix: '',
+							    		centsSeparator: ',',
+							    		thousandsSeparator: '.'
+									})" 
+							/>
+						</h:panelGroup>
+
+						<h:outputText value="Categoria" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="categorias" value="#{servicoBean.servico.categoria}" converter="#{categoriaConverter}" >
+						    <f:selectItems value="#{servicoBean.categorias}" var="c" itemValue="#{c}" itemLabel="#{c.descricao}" />
+						</h:selectOneMenu>
+						
+						<h:outputText value="" styleClass="label"></h:outputText>
+						<h:commandButton value="Salvar" action="#{servicoBean.salvar}"
+							styleClass="caixaTexto"></h:commandButton>
+					</h:panelGrid>
+
+					<rich:messages id="messages" layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

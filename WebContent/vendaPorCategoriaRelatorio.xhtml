@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<f:event listener="#{vendaBeanRpt.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Periodo:" styleClass="label" />
+						<h:outputText value="" />
+
+						<h:outputText id="out3" value="Inicial" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="false" value="#{vendaBeanRpt.dataInicial}">
+						</rich:calendar>
+
+						<h:outputText id="out7" value="Final" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datfi" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="false" value="#{vendaBeanRpt.dataFinal}">
+						</rich:calendar>
+
+						<h:outputText id="out9" value="Produto" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="produtoNome" value="#{vendaBeanRpt.produto}" converter="#{produtoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Todos)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBeanRpt.produtos}" var="produto" itemValue="#{produto}" itemLabel="#{produto.nome}" />
+						</h:selectOneMenu>
+
+						<h:outputText id="out10" value="Servico" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="servicoNome" value="#{vendaBeanRpt.servico}" converter="#{servicoConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Todos)" noSelectionOption="true"/>
+						    <f:selectItems value="#{vendaBeanRpt.servicos}" var="servico" itemValue="#{servico}" itemLabel="#{servico.nome}" />
+						</h:selectOneMenu>
+						
+						<h:outputText id="out" value=""></h:outputText>
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{vendaBeanRpt.atualizar}"></h:commandButton>
+
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+						<rich:dataTable id="relatorioProdutoTotal"
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							style="width:400px; border:2px"
+							value="#{vendaBeanRpt.relatorioProdutoTotal}" var="c"
+							rendered="#{not empty vendaBeanRpt.relatorioProdutoTotal}"
+							rows="10">
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="3">
+										<h:outputText value="Total de venda de produtos" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Produto" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Valor Total" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Detalhamento" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.valorVenda}" >
+									<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{vendaBeanRpt.detalharProduto(c)}" image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+
+							<f:facet name="footer">
+								<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+						</rich:dataTable>
+
+						<rich:dataTable id="relatorioServicoTotal"
+							onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+							onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							style="width:400px; border:2px"
+							value="#{vendaBeanRpt.relatorioServicoTotal}" var="c"
+							rendered="#{not empty vendaBeanRpt.relatorioServicoTotal}"
+							rows="10">
+
+							<f:facet name="header">
+								<rich:columnGroup>
+									<rich:column colspan="3">
+										<h:outputText value="Total de venda de serviços" />
+									</rich:column>
+									<rich:column breakRowBefore="true">
+										<h:outputText value="Servico" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Valor Total" />
+									</rich:column>
+									<rich:column>
+										<h:outputText value="Detalhamento" />
+									</rich:column>
+								</rich:columnGroup>
+							</f:facet>
+
+							<rich:column>
+								<h:outputText value="#{c.nome}" />
+							</rich:column>
+							<rich:column>
+								<h:outputText value="#{c.valor}" >
+									<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								</h:outputText>
+							</rich:column>
+							<rich:column>
+								<h:commandButton action="#{vendaBeanRpt.detalharServico(c)}" image="LayoutNovo/imagens/editar.png" />
+							</rich:column>
+
+							<f:facet name="footer">
+								<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+							</f:facet>
+
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

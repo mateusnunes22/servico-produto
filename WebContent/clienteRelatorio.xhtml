@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<f:event listener="#{clienteBeanRpt.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_relatorio.xhtml"/>
+					<h:panelGrid columns="2">
+
+						<h:outputText value="Periodo:" styleClass="label" />
+						<h:outputText value="" />
+
+						<h:outputText id="out3" value="Inicial" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datin" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true"
+							value="#{clienteBeanRpt.rpt.data.dataInicial}">
+						</rich:calendar>
+
+						<h:outputText id="out7" value="Final" styleClass="label"></h:outputText>
+
+						<rich:calendar id="datfi" popup="true" datePattern="dd/MM/yyyy"
+							enableManualInput="true"
+							value="#{clienteBeanRpt.rpt.data.dataFinal}">
+						</rich:calendar>
+
+						<h:outputText id="out9" value="Cliente" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="clienteNome" value="#{clienteBeanRpt.cliente}" converter="#{clienteConverter}" >
+							<f:selectItem itemValue="null" itemLabel="(Todos)" noSelectionOption="true"/>
+						    <f:selectItems value="#{clienteBeanRpt.clientes}" var="c" itemValue="#{c}" itemLabel="#{c.nome}" />
+						</h:selectOneMenu>
+						
+						<h:outputText value="Somente Indicados" styleClass="label"></h:outputText>
+						<h:selectBooleanCheckbox value="#{clienteBeanRpt.somenteIndicado}" >
+							<f:ajax execute="click" render="clienteNome pglabelFuncionario pglabelCliente pgSelectFuncionario pgSelectCliente" />
+						</h:selectBooleanCheckbox>
+						
+						<h:panelGroup id="pglabelFuncionario">
+							<h:outputText value="Funcionário" styleClass="label" rendered="#{clienteBeanRpt.somenteIndicado}"></h:outputText>
+						</h:panelGroup>
+						
+						<h:panelGroup id="pgSelectFuncionario">
+							<h:selectOneMenu id="funcionarios" converter="#{funcionarioConverter}" rendered="#{clienteBeanRpt.somenteIndicado}"
+									value="#{clienteBeanRpt.funcionarioIndicacao}" >
+								<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true" />
+								<f:selectItems value="#{clienteBeanRpt.funcionarios}" var="f" itemValue="#{f}" itemLabel="#{f.nome}" />
+								<f:ajax execute="change" render="clientes" listener="#{clienteBeanRpt.funcionarioChanged}" />
+							</h:selectOneMenu>
+						</h:panelGroup>	
+							
+						<h:panelGroup id="pglabelCliente">
+							<h:outputText value="Cliente" styleClass="label" rendered="#{clienteBeanRpt.somenteIndicado}"></h:outputText>
+						</h:panelGroup>
+						
+						<h:panelGroup id="pgSelectCliente">
+							<h:selectOneMenu id="clientes" converter="#{clienteConverter}" rendered="#{clienteBeanRpt.somenteIndicado}" 							
+									value="#{clienteBeanRpt.clienteIndicacao}" >
+								<f:selectItem itemValue="null" itemLabel="(Selecione)" noSelectionOption="true" />
+								<f:selectItems value="#{clienteBeanRpt.clientesIndicacao}" var="c" itemValue="#{c}" itemLabel="#{c.nome}" />
+								<f:ajax execute="change" render="funcionarios"  listener="#{clienteBeanRpt.clienteChanged}" />
+							</h:selectOneMenu>
+						</h:panelGroup>
+
+						<h:outputText id="out" value=""></h:outputText>
+						<h:commandButton id="out2" value="Atualizar"
+							action="#{clienteBeanRpt.atualizar}"></h:commandButton>
+
+					</h:panelGrid>
+
+					<rich:dataTable id="Contaspagar"
+						onrowmouseover="this.style.backgroundColor='#F1F1F1'"
+						onrowmouseout="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						style="width:750px; border:2px"
+						var="c" value="#{clienteBeanRpt.relatorio}"
+						rendered="#{not empty clienteBeanRpt.relatorio}" rows="10">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="15">
+									<h:outputText value="Lista do valor de compras dos clientes" />
+								</rich:column>
+								<rich:column breakRowBefore="true">
+									<h:outputText value="Cliente" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Produto" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Serviço" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Total" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Detalhamento" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:outputText value="#{c.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valorProduto}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valorServico}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{c.valorTotal}" >
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:commandButton action="#{clienteBeanRpt.detalhar(c)}" rendered="#{c.cliente}"
+								image="LayoutNovo/imagens/editar.png" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:dataScroller id="ds" renderIfSinglePage="false"></rich:dataScroller>
+						</f:facet>
+
+					</rich:dataTable>
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="title">Busca</ui:define>
+	<ui:define name="content">
+		<f:view>
+			<script src="Scripts/jquery.price_format.1.7.js" type="text/javascript" ></script>
+			<f:event listener="#{produtoBean.init}" type="preRenderView" />
+			<div id="impmi">
+				<h:form>
+					<ui:include src="/snippets/menu_cadastros.xhtml" />
+					<h3>Produto</h3>
+
+					<h:panelGrid columns="2">
+
+						<h:outputText value="Nome" styleClass="label"></h:outputText>
+						<h:inputText id="nomep" value="#{produtoBean.produto.nome}" size="20" requiredMessage="#{msg['produto.required.nome']}"
+							required="true" styleClass="caixaTexto" maxlength="80">
+							<f:ajax execute="keypress" render="messages" listener="#{produtoBean.verificarNome}" />
+						</h:inputText>
+
+						<h:outputText value="Valor compra" styleClass="label"></h:outputText>
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valorcaixaent1" value="#{produtoBean.produto.valorCompra}" size="20" styleClass="caixaTexto">
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:inputText>
+							<rich:jQuery selector="#valorcaixaent1" timing="domready" 
+								query="priceFormat({
+							    		prefix: '',
+							    		centsSeparator: ',',
+							    		thousandsSeparator: '.'
+									})" 
+							/>
+						</h:panelGroup>
+
+						<h:outputText value="Valor venda" styleClass="label"></h:outputText>
+						<h:panelGroup style="display: inline-block;">
+							<h:inputText id="valorcaixaent2" value="#{produtoBean.produto.valorVenda}" size="20" styleClass="caixaTexto">
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+							</h:inputText>
+							<rich:jQuery selector="#valorcaixaent2" timing="domready" 
+								query="priceFormat({
+							    		prefix: '',
+							    		centsSeparator: ',',
+							    		thousandsSeparator: '.'
+									})" 
+							/>
+						</h:panelGroup>
+
+						<h:outputText value="Quantidade baixa" styleClass="label"></h:outputText>
+						<h:inputText id="quant" value="#{produtoBean.quantidadeBaixa}"
+							size="20" styleClass="caixaTexto"></h:inputText>
+
+						<h:outputText value="Categoria" styleClass="label"></h:outputText>
+						<h:selectOneMenu id="categorias" value="#{produtoBean.produto.categoria}" converter="#{categoriaConverter}" >
+						    <f:selectItems value="#{produtoBean.categorias}" var="c" itemValue="#{c}" itemLabel="#{c.descricao}" />
+						</h:selectOneMenu>
+
+						<h:outputText value=""></h:outputText>
+						<h:commandButton value="Salvar" action="#{produtoBean.salvar}"></h:commandButton>
+					</h:panelGrid>
+
+					<rich:messages id="messages" layout="table" infoLabelClass="messageInfo"
+						errorLabelClass="messageError">
+
+						<f:facet name="infoMarker">
+							<h:graphicImage value="imagenss/check.png" />
+						</f:facet>
+
+						<f:facet name="errorMarker">
+							<h:graphicImage value="imagenss/fail.png" />
+						</f:facet>
+					</rich:messages>
+
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>
